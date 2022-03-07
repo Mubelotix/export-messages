@@ -1,20 +1,20 @@
 {
-  "description": "Demonstrating webRequests",
+  "description": "Export Discord and Instagram channel messages",
   "manifest_version": 2,
-  "name": "webRequest-demo",
+  "name": "message-exporter",
   "version": "1.0",
 
   "permissions": [
     "webRequest",
     "https://*.discord.com/*",
     "https://*.instagram.com/*",
-    "storage",
     "downloads"
   ],
 
   "background": {
     "scripts": ["background.js"]
   },
+  
   "content_scripts": [
     {
       "matches": ["https://*.discord.com/*", "https://*.instagram.com/*"],
