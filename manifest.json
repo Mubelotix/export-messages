@@ -6,7 +6,8 @@
 
   "permissions": [
     "webRequest",
-    "https://discord.com/*",
+    "https://*.discord.com/*",
+    "https://*.instagram.com/*",
     "storage",
     "downloads"
   ],
@@ -16,7 +17,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://discord.com/*"],
+      "matches": ["https://*.discord.com/*", "https://*.instagram.com/*"],
       "js": ["content.js"]
     }
   ]
