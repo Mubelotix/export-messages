@@ -1,18 +1,21 @@
 {
   "description": "Export your Discord and Instagram messages",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "message-exporter",
   "version": "1.0",
 
   "permissions": [
     "webRequest",
-    "https://*.discord.com/*",
-    "https://*.instagram.com/*",
     "downloads"
   ],
 
+  "host_permissions": [
+    "https://*.discord.com/*",
+    "https://*.instagram.com/*"
+  ],
+
   "background": {
-    "scripts": ["background.js"]
+    "service_worker": "background.js"
   },
   
   "content_scripts": [
