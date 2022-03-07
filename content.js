@@ -2,8 +2,6 @@ if (typeof browser === "undefined") {
     var browser = chrome;
 }
 
-console.log("content.js loaded");
-
 var url = window.location.href;
 var button = undefined;
 var adding_button = false;
@@ -88,8 +86,6 @@ async function exportDiscordChat() {
         return;
     }
 
-    console.log("exporting channel ", channel);
-
     let response = await fetch("https://discord.com/api/v9/channels/" + channel + "/messages?limit=100", {
         method: 'GET',
         mode: 'cors',
@@ -121,6 +117,7 @@ async function exportDiscordChat() {
         messages: messages,
         filename: "Discord messages - channel " + channel + ".json"
     });
+
     button.innerHTML = IDLE_SVG;
     button.firstChild.style.color = "rgb(59, 165, 93)";
 }
@@ -133,12 +130,9 @@ async function exportInstagramChat() {
     if (url.startsWith("https://www.instagram.com/direct/t/")) {
         channel = url.slice(35);
     } else {
-        console.log(url);
         alert("Failed to export messages: unrecognized channel. Please report issue at mubelotix@gmail.com.");
         return;
     }
-
-    console.log("exporting channel ", channel);
 
     let init_response = await (await fetch("https://i.instagram.com/api/v1/direct_v2/threads/" + channel + "/", {
         "referrer": "https://www.instagram.com/",
