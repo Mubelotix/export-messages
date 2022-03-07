@@ -107,15 +107,13 @@ async function exportDiscordChat() {
               'Authorization': token
             },
         });
-        try {
-            let new_messages = await response.json();
-            if (new_messages.length == 0) {
-                break;
-            }
-            messages = messages.concat(new_messages);
-        } catch (e) {
-            alert("Failed to export all messages. Error: " + e);
+
+        let new_messages = await response.json();
+        if (new_messages.length == 0) {
+            break;
         }
+        messages = messages.concat(new_messages);
+        
         await sleep(700);
     }
 
@@ -172,6 +170,7 @@ async function exportInstagramChat() {
 
         prev_cursor = response.thread.prev_cursor;
         messages = messages.concat(response.thread.items);
+
         await sleep(700);
     }
 
